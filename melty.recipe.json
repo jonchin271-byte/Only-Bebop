@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "mode": "standalone",
+  "games": [
+    { "slug": "deadlock", "role": "primary" },
+    { "slug": "custom-only-up", "role": "secondary" }
+  ],
+  "components": [
+    { "id": "main", "fileName": "OnlyBebop-0.1.0-win64.zip", "label": "Only Bebop", "kind": "main", "required": true }
+  ],
+  "requirements": [],
+  "mappings": [
+    { "component": "main", "from": "OnlyBebop/", "to": "{managed}" }
+  ],
+  "launch": {
+    "kind": "exe",
+    "path": "{managed}/OnlyBebop.exe",
+    "args": ["--", "--deadlock", "{game}"],
+    "env": { "ONLYBEBOP_DEADLOCK": "{game}" }
+  },
+  "runtimeData": ["{localappdata}/OnlyBebop"]
+}
