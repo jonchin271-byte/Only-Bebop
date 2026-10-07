@@ -1,0 +1,16 @@
+{
+  "sheet": "inputs",
+  "about": "Input actions. Defaults match Deadlock's default bindings.",
+  "columns": { "id": "string", "keys": "string", "prompt": "string" },
+  "rows": [
+    { "id": "move", "keys": "W,A,S,D", "prompt": "WASD to move" },
+    { "id": "look", "keys": "mouse", "prompt": "Mouse to look" },
+    { "id": "jump", "keys": "Space", "prompt": "SPACE to jump - again in the air to double jump, hold into a ledge to mantle" },
+    { "id": "dash", "keys": "Shift", "prompt": "SHIFT to dash (uses stamina)" },
+    { "id": "sprint", "keys": "Ctrl+W", "prompt": "Hold CTRL to sprint" },
+    { "id": "ability_1", "keys": "1", "prompt": "1  Uppercut - launch yourself upward" },
+    { "id": "ability_3", "keys": "3,Mouse4", "prompt": "3  Hook - aim at a ledge and reel yourself in" },
+    { "id": "menu", "keys": "Escape", "prompt": "ESC for menu" },
+    { "id": "none", "keys": "-", "prompt": "-" }
+  ]
+}

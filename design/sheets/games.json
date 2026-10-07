@@ -1,0 +1,29 @@
+{
+  "sheet": "games",
+  "about": "Each game the mashup reads. Role follows Melty's recipe: primary = host Melty installs into, secondary = found by the mod itself.",
+  "columns": {
+    "id": "string", "name": "string", "melty_slug": "string", "melty_role": "enum:primary|secondary",
+    "store": "string", "steam_appid": "int", "engine": "string", "reader": "ref:libraries",
+    "locate": "string", "archive": "string", "units_per_meter": "number", "missing_message": "string", "source": "string"
+  },
+  "rows": [
+    {
+      "id": "deadlock", "name": "Deadlock", "melty_slug": "deadlock", "melty_role": "primary",
+      "store": "steam", "steam_appid": 1422450, "engine": "source2", "reader": "vrf",
+      "locate": "launch arg --deadlock \"{game}\" from Melty; fallback: Steam libraryfolders.vdf + appmanifest_1422450.acf",
+      "archive": "game/citadel/pak01_dir.vpk", "units_per_meter": 39.3701,
+      "missing_message": "Deadlock wasn't found. Only Bebop reads Bebop and the hero roster from your Deadlock install - install it on Steam, then press Play again.",
+      "source": "Melty game_info (exe game/bin/win64/deadlock.exe); SteamDB GameTracking-Deadlock pak01_dir layout",
+      "_unverified": ["units_per_meter"]
+    },
+    {
+      "id": "onlyup", "name": "Only Up!", "melty_slug": "custom-only-up", "melty_role": "secondary",
+      "store": "steam", "steam_appid": 2381590, "engine": "unreal5", "reader": "cue4parse",
+      "locate": "Steam libraryfolders.vdf -> appmanifest_2381590.acf installdir; fallback: steamapps/common/* containing *-Win64-Shipping.exe and Content/Paks with 'Only' in folder name",
+      "archive": "<installdir>/<Project>/Content/Paks/*.pak|*.utoc", "units_per_meter": 100,
+      "missing_message": "Only Up! wasn't found. The climb is Only Up!'s own level, read from your copy - install Only Up! from your Steam library (it was delisted in 2023, so only existing owners have it), then press Play again.",
+      "source": "SteamSpy app 2381590; Wikipedia (Unreal Engine 5, removed from Steam Sept 2023); UE uses centimetres",
+      "_unverified": ["steam_appid", "archive"]
+    }
+  ]
+}

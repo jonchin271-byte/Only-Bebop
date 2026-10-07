@@ -1,0 +1,5 @@
+dist/
+**/bin/
+**/obj/
+game/.godot/
+*.user

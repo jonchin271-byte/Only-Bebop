@@ -1,0 +1,84 @@
+{
+  "deadlock": {
+    "archive": "game/citadel/pak01_dir.vpk",
+    "units_per_meter": 39.3701,
+    "heroes": [
+      {
+        "id": "bebop",
+        "vdata_key": "hero_bebop",
+        "model": "models/heroes_staging/bebop/bebop.vmdl_c",
+        "playable": true
+      }
+    ],
+    "roster": true,
+    "abilities": [
+      {
+        "id": "hook",
+        "vdata_key": "citadel_ability_hook",
+        "icon": "panorama/images/hud/abilities/bebop/bebop_hook_psd.vtex_c"
+      },
+      {
+        "id": "uppercut",
+        "vdata_key": "citadel_ability_uppercut",
+        "icon": "panorama/images/hud/abilities/bebop/bebop_uppercut_psd.vtex_c"
+      }
+    ],
+    "stats": {
+      "run": "heroes.vdata/hero_bebop/m_mapStartingStats/EMaxMoveSpeed",
+      "sprint": "heroes.vdata/hero_bebop/m_mapStartingStats/ESprintSpeed",
+      "jump": "abilities.vdata/citadel_ability_jump/VerticalSpeed",
+      "air_jump": "abilities.vdata/citadel_ability_jump/AirJumpVerticalSpeedPercent",
+      "ground_dash": "heroes.vdata/hero_bebop/m_mapStartingStats/EGroundDashDistanceInMeters",
+      "air_dash": "heroes.vdata/hero_bebop/m_mapStartingStats/EAirDashDistanceInMeters",
+      "stamina": "heroes.vdata/hero_bebop/m_mapStartingStats/EStamina",
+      "mantle": "abilities.vdata/citadel_ability_mantle (no tuning values)",
+      "hook.range": "abilities.vdata/citadel_ability_hook/AbilityCastRange",
+      "hook.cooldown": "abilities.vdata/citadel_ability_hook/AbilityCooldown",
+      "uppercut.range": "abilities.vdata/citadel_ability_uppercut/MeleeAttackLength",
+      "uppercut.cooldown": "abilities.vdata/citadel_ability_uppercut/AbilityCooldown",
+      "uppercut.launch": "abilities.vdata/citadel_ability_uppercut/EnemyHeroTossVelocity"
+    },
+    "sounds": [
+      {
+        "id": "bebop_pick_vo",
+        "event": "Generated.Bebop.Hero.Pick.VO",
+        "script": "soundevents/generated_vo_hero_pick_vo.vsndevts_c"
+      },
+      {
+        "id": "bebop_hook_hit",
+        "event": "Bebop.Hook.Player",
+        "script": "soundevents/hero/bebop.vsndevts_c"
+      },
+      {
+        "id": "bebop_uppercut",
+        "event": "Bebop.Uppercut.Cast",
+        "script": "soundevents/hero/bebop.vsndevts_c"
+      },
+      {
+        "id": "dash_ground",
+        "event": "Player.Dash.Ground",
+        "script": "soundevents/player.vsndevts_c"
+      },
+      {
+        "id": "dash_air",
+        "event": "Player.Dash.Air",
+        "script": "soundevents/player.vsndevts_c"
+      },
+      {
+        "id": "dash_jump",
+        "event": "Player.Dash.Jump",
+        "script": "soundevents/player.vsndevts_c"
+      },
+      {
+        "id": "stamina_drained",
+        "event": "Damage.Stamina.Drain",
+        "script": "soundevents/damage.vsndevts_c"
+      }
+    ]
+  },
+  "onlyup": {
+    "appid": 2381590,
+    "units_per_meter": 100,
+    "music": "USoundWave assets whose path contains Music|OST|Soundtrack (first by path order)"
+  }
+}

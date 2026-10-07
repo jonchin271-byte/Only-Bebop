@@ -1,0 +1,19 @@
+{
+  "sheet": "movement",
+  "about": "Deadlock's shared movement kit. value = fallback from SteamDB's tracked heroes/abilities vdata; the game reads the player's own vdata when present (vdata_path).",
+  "columns": {
+    "id": "string", "input_action": "ref:inputs", "vdata_path": "string", "value": "number", "unit": "string",
+    "secondary": "number", "secondary_unit": "string", "stamina_cost": "int", "sound_event": "ref:audio", "notes": "string"
+  },
+  "rows": [
+    { "id": "run", "input_action": "move", "vdata_path": "heroes.vdata/hero_bebop/m_mapStartingStats/EMaxMoveSpeed", "value": 6.45, "unit": "m/s", "secondary": 4.75, "secondary_unit": "crouch m/s (ECrouchSpeed)", "stamina_cost": 0, "sound_event": "none", "notes": "Ground speed." },
+    { "id": "sprint", "input_action": "sprint", "vdata_path": "heroes.vdata/hero_bebop/m_mapStartingStats/ESprintSpeed", "value": 4.0, "unit": "m/s added", "secondary": 0, "secondary_unit": "-", "stamina_cost": 0, "sound_event": "none", "notes": "Added to run speed while held out of combat.", "_unverified": ["notes"] },
+    { "id": "jump", "input_action": "jump", "vdata_path": "abilities.vdata/citadel_ability_jump/VerticalSpeed", "value": 300, "unit": "units/s", "secondary": 0.15, "secondary_unit": "s cooldown (AbilityCooldown)", "stamina_cost": 0, "sound_event": "none", "notes": "Converted with games.deadlock.units_per_meter." },
+    { "id": "air_jump", "input_action": "jump", "vdata_path": "abilities.vdata/citadel_ability_jump/AirJumpVerticalSpeedPercent", "value": 75, "unit": "% of jump", "secondary": 1, "secondary_unit": "air jumps", "stamina_cost": 1, "sound_event": "dash_jump", "notes": "Double jump in the air.", "_unverified": ["stamina_cost"] },
+    { "id": "ground_dash", "input_action": "dash", "vdata_path": "heroes.vdata/hero_bebop/m_mapStartingStats/EGroundDashDistanceInMeters", "value": 10.0, "unit": "m", "secondary": 0.72, "secondary_unit": "s (EGroundDashDuration)", "stamina_cost": 1, "sound_event": "dash_ground", "notes": "Dash in move direction." },
+    { "id": "air_dash", "input_action": "dash", "vdata_path": "heroes.vdata/hero_bebop/m_mapStartingStats/EAirDashDistanceInMeters", "value": 8.0, "unit": "m", "secondary": 0.51, "secondary_unit": "s (EAirDashDuration)", "stamina_cost": 1, "sound_event": "dash_air", "notes": "Dash in the air, no gravity during dash." },
+    { "id": "stamina", "input_action": "none", "vdata_path": "heroes.vdata/hero_bebop/m_mapStartingStats/EStamina", "value": 3, "unit": "pips", "secondary": 0.181818, "secondary_unit": "pips/s (EStaminaRegenPerSecond)", "stamina_cost": 0, "sound_event": "stamina_drained", "notes": "Regen only while grounded." , "_unverified": ["notes"] },
+    { "id": "mantle", "input_action": "jump", "vdata_path": "abilities.vdata/citadel_ability_mantle (no tuning values)", "value": 1.4, "unit": "m ledge reach above feet+height", "secondary": 0.25, "secondary_unit": "s climb-up time", "stamina_cost": 0, "sound_event": "none", "notes": "Holding jump into a ledge pulls Bebop up. Values are this mashup's tuning." },
+    { "id": "gravity", "input_action": "none", "vdata_path": "engine sv_gravity (not in vdata)", "value": 800, "unit": "units/s^2", "secondary": 0, "secondary_unit": "-", "stamina_cost": 0, "sound_event": "none", "notes": "Source default; Deadlock's real value to be checked in its console.", "_unverified": ["value"] }
+  ]
+}

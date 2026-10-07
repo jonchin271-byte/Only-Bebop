@@ -1,0 +1,11 @@
+{
+  "sheet": "level",
+  "about": "The climb: Only Up!'s own level read from the player's install. Positions are in Only Up! cm and converted by games.onlyup.units_per_meter.",
+  "columns": { "id": "string", "game": "ref:games", "asset": "string", "rule": "string" },
+  "rows": [
+    { "id": "world", "game": "onlyup", "asset": "The .umap with the most StaticMeshComponents under /Game/Maps or /Game/*/Maps (listed in extract log)", "rule": "Every StaticMeshComponent and InstancedStaticMeshComponent in its persistent level and streamed sublevels becomes a mesh + trimesh collider.", "_unverified": ["asset"] },
+    { "id": "spawn", "game": "onlyup", "asset": "PlayerStart actor in world", "rule": "Bebop spawns here; fallback = lowest walkable mesh top near world origin.", "_unverified": ["asset"] },
+    { "id": "stretch_end", "game": "onlyup", "asset": "Height above spawn", "rule": "v0.1 stretch: from spawn up to the first big landmark; a banner shows when Bebop passes 120 m above spawn (tune once the real map is read).", "_unverified": ["asset"] },
+    { "id": "falls", "game": "onlyup", "asset": "-", "rule": "No checkpoints and no fall damage: a fall keeps you wherever you land, like Only Up!. Below the map's lowest mesh - 50 m respawns at spawn." }
+  ]
+}

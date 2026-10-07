@@ -1,0 +1,21 @@
+{
+  "sheet": "systems",
+  "about": "Every program system and every hook into a game's files. One row = one C# class.",
+  "columns": { "id": "string", "class": "string", "kind": "enum:launch|read|game|ui", "reads": "refs:games", "depends_on": "refs:systems", "does": "string", "test": "string" },
+  "rows": [
+    { "id": "launch_args", "class": "LaunchArgs", "kind": "launch", "reads": [], "depends_on": [], "does": "Parse --deadlock <path> (from Melty's {game}) and --onlyup <path> overrides; env ONLYBEBOP_DEADLOCK as fallback.", "test": "unit: headless --selftest" },
+    { "id": "steam_locator", "class": "SteamLocator", "kind": "read", "reads": ["deadlock", "onlyup"], "depends_on": [], "does": "Find Steam root (registry HKCU\\Software\\Valve\\Steam SteamPath, default paths), parse libraryfolders.vdf and appmanifest_<appid>.acf to find each game's folder.", "test": "unit: headless --selftest with a fake Steam tree" },
+    { "id": "deadlock_extract", "class": "DeadlockExtractor", "kind": "read", "reads": ["deadlock"], "depends_on": ["launch_args"], "does": "tools/deadlock-extract.exe: open pak01_dir.vpk, read heroes.vdata + abilities.vdata, export Bebop model+anims to glb, roster cards to png, listed sound events to wav, write cache manifest.", "test": "real install on player's PC" },
+    { "id": "onlyup_extract", "class": "OnlyUpExtractor", "kind": "read", "reads": ["onlyup"], "depends_on": ["steam_locator"], "does": "tools/onlyup-extract.exe: mount paks, pick the world map, export unique static meshes to glb + instance list json, music to wav/ogg, write cache manifest.", "test": "real install on player's PC" },
+    { "id": "content_cache", "class": "ContentCache", "kind": "read", "reads": ["deadlock", "onlyup"], "depends_on": ["deadlock_extract", "onlyup_extract"], "does": "%LOCALAPPDATA%/OnlyBebop/cache/<game>/manifest.json keyed by source archive sizes+mtimes; re-runs an extractor when its game updates. Never leaves the player's PC.", "test": "unit: headless --selftest" },
+    { "id": "boot", "class": "Boot", "kind": "ui", "reads": [], "depends_on": ["launch_args", "steam_locator", "content_cache"], "does": "First scene: locate both games, show missing-game screen or run extractors with a progress bar, then hero select.", "test": "headless run with no games -> missing screen" },
+    { "id": "hero_select", "class": "HeroSelect", "kind": "ui", "reads": ["deadlock"], "depends_on": ["boot"], "does": "Grid of roster cards from cache; Bebop playable, others 'Coming soon'; pick plays Bebop's pick VO.", "test": "real install" },
+    { "id": "level_loader", "class": "LevelLoader", "kind": "game", "reads": ["onlyup"], "depends_on": ["content_cache"], "does": "Load mesh glbs once, place instances (cm->m, UE left-handed Z-up -> Godot Y-up), add trimesh StaticBody3D colliders, find spawn.", "test": "real install" },
+    { "id": "climber", "class": "Climber", "kind": "game", "reads": ["deadlock"], "depends_on": ["level_loader"], "does": "CharacterBody3D with movement sheet rows: run, sprint, jump, air jump, dashes, stamina, mantle, gravity. Bebop glb as visual with idle/run/jump anims when present.", "test": "headless physics bench on a test tower (--selftest)" },
+    { "id": "hook", "class": "HookAbility", "kind": "game", "reads": ["deadlock"], "depends_on": ["climber"], "does": "abilities.hook row.", "test": "headless physics bench" },
+    { "id": "uppercut", "class": "UppercutAbility", "kind": "game", "reads": ["deadlock"], "depends_on": ["climber"], "does": "abilities.uppercut row.", "test": "headless physics bench" },
+    { "id": "camera", "class": "ShoulderCamera", "kind": "game", "reads": [], "depends_on": ["climber"], "does": "Deadlock-style over-the-shoulder third-person camera with collision.", "test": "real run" },
+    { "id": "hud", "class": "Hud", "kind": "ui", "reads": ["deadlock"], "depends_on": ["climber"], "does": "Stamina pips, ability icons with cooldowns, height above spawn, first-seconds prompts from inputs sheet.", "test": "real run" },
+    { "id": "music", "class": "MusicPlayer", "kind": "game", "reads": ["onlyup"], "depends_on": ["content_cache"], "does": "Loop Only Up! music from cache.", "test": "real install" }
+  ]
+}

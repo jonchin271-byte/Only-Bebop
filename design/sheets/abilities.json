@@ -1,0 +1,72 @@
+{
+  "sheet": "abilities",
+  "about": "Hero abilities adapted for climbing. deadlock_* columns are read from the player's scripts/abilities.vdata at runtime (value here = fallback, from SteamDB's tracked copy); climb_* columns are this mashup's tuning.",
+  "columns": {
+    "id": "string",
+    "hero": "ref:heroes",
+    "vdata_key": "string",
+    "slot": "string",
+    "input_action": "ref:inputs",
+    "deadlock_range_m": "number",
+    "deadlock_cooldown_s": "number",
+    "deadlock_launch_mps": "number",
+    "range_prop": "string",
+    "cooldown_prop": "string",
+    "launch_prop": "string",
+    "climb_behaviour": "string",
+    "climb_cooldown_s": "number",
+    "climb_speed_mps": "number",
+    "climb_release_m": "number",
+    "icon_image": "string",
+    "sound_event": "ref:audio",
+    "source": "string"
+  },
+  "rows": [
+    {
+      "id": "hook",
+      "hero": "bebop",
+      "vdata_key": "citadel_ability_hook",
+      "slot": "ESlot_Signature_3",
+      "input_action": "ability_3",
+      "deadlock_range_m": 30,
+      "deadlock_cooldown_s": 23,
+      "deadlock_launch_mps": 0,
+      "climb_behaviour": "Raycast from camera up to deadlock_range_m; on hitting level geometry, reel Bebop toward the hit point at climb_speed_mps, ignoring gravity, until within climb_release_m; keep 40% of velocity on release. Miss = short cooldown.",
+      "climb_cooldown_s": 4,
+      "climb_speed_mps": 26,
+      "climb_release_m": 1.5,
+      "icon_image": "panorama/images/hud/abilities/bebop/bebop_hook_psd.vtex_c",
+      "sound_event": "bebop_hook_hit",
+      "source": "abilities.vdata citadel_ability_hook: AbilityCastRange 30m, AbilityCooldown 23.0, m_strHookSuccessSound Bebop.Hook.Player",
+      "_unverified": [
+        "icon_image"
+      ],
+      "range_prop": "AbilityCastRange",
+      "cooldown_prop": "AbilityCooldown",
+      "launch_prop": "-"
+    },
+    {
+      "id": "uppercut",
+      "hero": "bebop",
+      "vdata_key": "citadel_ability_uppercut",
+      "slot": "ESlot_Signature_1",
+      "input_action": "ability_1",
+      "deadlock_range_m": 6,
+      "deadlock_cooldown_s": 22,
+      "deadlock_launch_mps": 20,
+      "climb_behaviour": "Bebop uppercuts the air and launches himself: set vertical velocity to climb_speed_mps (keeps horizontal). Usable on ground or in air once per cooldown.",
+      "climb_cooldown_s": 6,
+      "climb_speed_mps": 13,
+      "climb_release_m": 0,
+      "icon_image": "panorama/images/hud/abilities/bebop/bebop_uppercut_psd.vtex_c",
+      "sound_event": "bebop_uppercut",
+      "source": "abilities.vdata citadel_ability_uppercut: MeleeAttackLength 6m, AbilityCooldown 22.0, EnemyHeroTossVelocity 20m, m_strAbilityImage bebop_uppercut.psd",
+      "_unverified": [
+        "icon_image"
+      ],
+      "range_prop": "MeleeAttackLength",
+      "cooldown_prop": "AbilityCooldown",
+      "launch_prop": "EnemyHeroTossVelocity"
+    }
+  ]
+}

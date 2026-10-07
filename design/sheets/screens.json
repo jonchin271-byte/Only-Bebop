@@ -1,0 +1,13 @@
+{
+  "sheet": "screens",
+  "about": "Every screen the player can see.",
+  "columns": { "id": "string", "system": "ref:systems", "shows": "string" },
+  "rows": [
+    { "id": "missing_deadlock", "system": "boot", "shows": "games.deadlock.missing_message + Quit" },
+    { "id": "missing_onlyup", "system": "boot", "shows": "games.onlyup.missing_message + Quit + 'Choose folder...' for non-Steam copies" },
+    { "id": "preparing", "system": "boot", "shows": "'Reading Bebop from Deadlock... / Reading the tower from Only Up!...' progress, first run only" },
+    { "id": "hero_select", "system": "hero_select", "shows": "Roster cards, Bebop selectable" },
+    { "id": "climb", "system": "hud", "shows": "Game view + HUD + prompts for the first 8 seconds" },
+    { "id": "pause", "system": "hud", "shows": "Resume / Back to hero select / Quit" }
+  ]
+}

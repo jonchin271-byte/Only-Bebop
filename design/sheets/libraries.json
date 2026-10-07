@@ -1,0 +1,66 @@
+{
+  "sheet": "libraries",
+  "about": "Third-party code bundled in the release, with license and credit. No game content is ever bundled.",
+  "columns": {
+    "id": "string",
+    "name": "string",
+    "package": "string",
+    "version": "string",
+    "license": "string",
+    "author": "string",
+    "url": "string",
+    "used_by": "string"
+  },
+  "rows": [
+    {
+      "id": "vrf",
+      "name": "ValveResourceFormat",
+      "package": "nuget:ValveResourceFormat",
+      "version": "20.0.6980",
+      "license": "MIT",
+      "author": "ValveResourceFormat contributors (SteamDatabase)",
+      "url": "https://github.com/ValveResourceFormat/ValveResourceFormat",
+      "used_by": "deadlock-extract"
+    },
+    {
+      "id": "cue4parse",
+      "name": "CUE4Parse",
+      "package": "nuget:CUE4Parse + CUE4Parse-Conversion",
+      "version": "1.2.2.202610",
+      "license": "Apache-2.0",
+      "author": "FabianFG and CUE4Parse contributors",
+      "url": "https://github.com/FabianFG/CUE4Parse",
+      "used_by": "onlyup-extract"
+    },
+    {
+      "id": "godot",
+      "name": "Godot Engine (.NET)",
+      "package": "Godot_v4.5.1-stable_mono",
+      "version": "4.5.1",
+      "license": "MIT",
+      "author": "Juan Linietsky, Ariel Manzur and Godot contributors",
+      "url": "https://godotengine.org",
+      "used_by": "game"
+    },
+    {
+      "id": "dotnet",
+      "name": ".NET runtime",
+      "package": "self-contained publish",
+      "version": "8.0 (game) / 10.0 (extractors)",
+      "license": "MIT",
+      "author": ".NET Foundation",
+      "url": "https://dotnet.microsoft.com",
+      "used_by": "game, deadlock-extract, onlyup-extract"
+    },
+    {
+      "id": "zlibng",
+      "name": "zlib-ng (zlib-ng2.dll)",
+      "package": "github:NotOfficer/Zlib-ng.NET release 1.0.0 zlib-ng2.dll.gz (sha256 454be2f3...)",
+      "version": "1.0.0",
+      "license": "zlib (wrapper MIT)",
+      "author": "zlib-ng contributors; NotOfficer",
+      "url": "https://github.com/zlib-ng/zlib-ng",
+      "used_by": "onlyup-extract"
+    }
+  ]
+}

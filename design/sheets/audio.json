@@ -1,0 +1,79 @@
+{
+  "sheet": "audio",
+  "about": "Every sound/music the mashup plays, all read from the player's installs. Deadlock events resolve through the script's vsnd_files list to sounds/*.vsnd_c (verified against SteamDB's tracked soundevents, Oct 2026).",
+  "columns": {
+    "id": "string",
+    "game": "ref:games",
+    "event_or_asset": "string",
+    "script": "string",
+    "plays_when": "string"
+  },
+  "rows": [
+    {
+      "id": "bebop_pick_vo",
+      "game": "deadlock",
+      "event_or_asset": "Generated.Bebop.Hero.Pick.VO",
+      "script": "soundevents/generated_vo_hero_pick_vo.vsndevts_c",
+      "plays_when": "Bebop picked on hero select"
+    },
+    {
+      "id": "bebop_hook_hit",
+      "game": "deadlock",
+      "event_or_asset": "Bebop.Hook.Player",
+      "script": "soundevents/hero/bebop.vsndevts_c",
+      "plays_when": "Hook latches onto geometry"
+    },
+    {
+      "id": "bebop_uppercut",
+      "game": "deadlock",
+      "event_or_asset": "Bebop.Uppercut.Cast",
+      "script": "soundevents/hero/bebop.vsndevts_c",
+      "plays_when": "Uppercut launch"
+    },
+    {
+      "id": "dash_ground",
+      "game": "deadlock",
+      "event_or_asset": "Player.Dash.Ground",
+      "script": "soundevents/player.vsndevts_c",
+      "plays_when": "Ground dash"
+    },
+    {
+      "id": "dash_air",
+      "game": "deadlock",
+      "event_or_asset": "Player.Dash.Air",
+      "script": "soundevents/player.vsndevts_c",
+      "plays_when": "Air dash"
+    },
+    {
+      "id": "dash_jump",
+      "game": "deadlock",
+      "event_or_asset": "Player.Dash.Jump",
+      "script": "soundevents/player.vsndevts_c",
+      "plays_when": "Air jump"
+    },
+    {
+      "id": "stamina_drained",
+      "game": "deadlock",
+      "event_or_asset": "Damage.Stamina.Drain",
+      "script": "soundevents/damage.vsndevts_c",
+      "plays_when": "Dash/air jump with no stamina"
+    },
+    {
+      "id": "onlyup_music",
+      "game": "onlyup",
+      "event_or_asset": "USoundWave assets whose path contains Music|OST|Soundtrack (first by path order)",
+      "script": "-",
+      "plays_when": "Looping from spawn",
+      "_unverified": [
+        "event_or_asset"
+      ]
+    },
+    {
+      "id": "none",
+      "game": "deadlock",
+      "event_or_asset": "-",
+      "script": "-",
+      "plays_when": "never"
+    }
+  ]
+}

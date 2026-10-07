@@ -1,0 +1,26 @@
+{
+  "sheet": "heroes",
+  "about": "Heroes on the select screen. Everything visual and audible comes from the player's Deadlock install.",
+  "columns": {
+    "id": "string", "display_name": "string", "vdata_key": "string", "playable": "bool", "model": "string",
+    "card_image": "string", "pick_vo_event": "ref:audio", "vo_events_script": "string", "abilities": "refs:abilities", "source": "string"
+  },
+  "rows": [
+    {
+      "id": "bebop", "display_name": "Bebop", "vdata_key": "hero_bebop", "playable": true,
+      "model": "models/heroes_staging/bebop/bebop.vmdl_c",
+      "card_image": "panorama/images/heroes/bebop_card_psd.vtex_c",
+      "pick_vo_event": "bebop_pick_vo", "vo_events_script": "soundevents/vo/generated_vo_hero_bebop.vsndevts_c",
+      "abilities": ["hook", "uppercut"],
+      "source": "scripts/heroes.vdata hero_bebop: m_strModelName, m_strIconHeroCard, m_strRosterSelectedSound, m_hGeneratedVOEventScript",
+      "_unverified": ["card_image"]
+    },
+    {
+      "id": "roster_rest", "display_name": "(each hero's name from heroes.vdata)", "vdata_key": "hero_* where m_bDisabled=false and m_bInDevelopment=false and m_strIconHeroCard set, excluding hero_bebop",
+      "playable": false, "model": "-", "card_image": "panorama/images/heroes/<name>_card_psd.vtex_c from m_strIconHeroCard",
+      "pick_vo_event": "none", "vo_events_script": "-", "abilities": [],
+      "source": "scripts/heroes.vdata; shown greyed out as 'Coming soon'",
+      "_unverified": ["card_image"]
+    }
+  ]
+}
